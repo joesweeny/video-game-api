@@ -8,10 +8,8 @@ services:
     volumes:
       - .:/opt
     environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=app
-      - MYSQL_USER=dev
-      - MYSQL_PASSWORD=password
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: app
 
   nginx:
     build:
@@ -22,19 +20,18 @@ services:
     links:
       - api
 
-  api: &api
+  api:
     build:
       dockerfile: ./docker/api/Dockerfile
       context: ./
     links:
       - mysql
     environment:
-      - DB_USER=root
-      - DB_PASSWORD=password
+      DB_CONNECTION: mysql
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: app
+      DB_USERNAME: root
+      DB_PASSWORD: password
     volumes:
       - .:/opt
-
-  migrate:
-    <<: *api
-    restart: on-failure
-    command: /opt/bin/migrate
