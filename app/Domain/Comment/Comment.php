@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Domain\Component;
+namespace App\Domain\Comment;
 
+use App\Domain\Component\Timestamps;
 use Ramsey\Uuid\UuidInterface;
 
 class Comment

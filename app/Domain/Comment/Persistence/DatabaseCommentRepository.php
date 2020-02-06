@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\Component\Persistence;
+namespace App\Domain\Comment\Persistence;
 
-use App\Domain\Component\Comment;
+use App\Domain\Comment\Comment;
 use Illuminate\Database\Connection;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
@@ -24,7 +24,7 @@ class DatabaseCommentRepository implements CommentRepository
         $now = new \DateTimeImmutable();
 
         $values = [
-            'id' => $comment->getId(),
+            'id' => $comment->getId()->getBytes(),
             'user_id' => $comment->getUserId()->getBytes(),
             'game_id' => $comment->getGameId()->getBytes(),
             'text' => $comment->getText(),

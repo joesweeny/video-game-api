@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\Component\Persistence;
+namespace App\Domain\Comment\Persistence;
 
-use App\Domain\Component\Comment;
+use App\Domain\Comment\Comment;
 use Ramsey\Uuid\UuidInterface;
 
 interface CommentRepository

@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Domain\Component\Persistence\CommentRepository;
-use App\Domain\Component\Persistence\DatabaseCommentRepository;
+use App\Domain\Comment\Persistence\CommentRepository;
+use App\Domain\Comment\Persistence\DatabaseCommentRepository;
 use App\Domain\Game\Persistence\DatabaseGameRepository;
 use App\Domain\Game\Persistence\Repository;
 use App\Domain\User\Persistence\DatabaseUserRepository;
