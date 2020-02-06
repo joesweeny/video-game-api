@@ -63,7 +63,7 @@ class Game
     {
         return $this->released;
     }
-    
+
     public function getEncryptionKey(): string
     {
         return $this->encryptionKey;
