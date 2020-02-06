@@ -20,14 +20,14 @@ class DatabaseUserRepository implements UserRepository
 
     public function insert(User $user): void
     {
-        $row = new \DateTimeImmutable();
+        $now = new \DateTimeImmutable();
 
         $values = [
             'id' => $user->getId()->getBytes(),
             'name' => $user->getName(),
             'email' => $user->getEmail(),
-            'created_at' => $user->getDateCreated()->getTimestamp(),
-            'updated_at' => $user->getDateCreated()->getTimestamp(),
+            'created_at' => $now->getTimestamp(),
+            'updated_at' => $now->getTimestamp(),
         ];
 
         $this->connection->table('user')->insert($values);
