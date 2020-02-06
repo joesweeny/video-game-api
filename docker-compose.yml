@@ -20,7 +20,7 @@ services:
     links:
       - api
 
-  api: &api
+  api:
     build:
       dockerfile: ./docker/api/Dockerfile
       context: ./
@@ -35,8 +35,3 @@ services:
       DB_PASSWORD: password
     volumes:
       - .:/opt
-
-  migrate:
-    <<: *api
-    restart: on-failure
-    command: php artisan migrate
