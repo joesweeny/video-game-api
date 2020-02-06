@@ -10,7 +10,7 @@ class UserPresenter
     {
         return (object) [
             'id' => (string) $user->getId(),
-            'name' => $user->getEmail()
+            'name' => $user->getName()
         ];
     }
 }
