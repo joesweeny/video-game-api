@@ -12,5 +12,5 @@ interface Repository
      * @param GameRepositoryQuery $query
      * @return array|Game[]
      */
-    public function get(GameRepositoryQuery $query): array;
+    public function get(GameRepositoryQuery $query = null): array;
 }

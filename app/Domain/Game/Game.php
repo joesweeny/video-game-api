@@ -4,6 +4,7 @@ namespace App\Domain\Game;
 
 use App\Domain\Component\Timestamps;
 use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 
 class Game
 {
@@ -31,7 +32,7 @@ class Game
     private $encryptionKey;
 
     public function __construct(
-        Uuid $id,
+        UuidInterface $id,
         string $name,
         string $publisher,
         \DateTimeImmutable $released,
@@ -44,7 +45,7 @@ class Game
         $this->encryptionKey = $encryptionKey;
     }
 
-    public function getId(): Uuid
+    public function getId(): UuidInterface
     {
         return $this->id;
     }
