@@ -14,4 +14,10 @@ interface CommentRepository
      * @return array|Comment[]
      */
     public function getByGameId(UuidInterface $gameId): array;
+
+    /**
+     * @param UuidInterface $userId
+     * @return array|Comment[]
+     */
+    public function getByUserId(UuidInterface $userId): array;
 }

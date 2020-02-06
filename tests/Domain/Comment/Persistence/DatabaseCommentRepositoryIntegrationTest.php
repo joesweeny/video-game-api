@@ -89,4 +89,39 @@ class DatabaseCommentRepositoryIntegrationTest extends TestCase
             $this->assertEquals($gameId, $comment->getGameId());
         }
     }
+
+    public function test_getByUserId_returns_comment_records_associated_to_a_user_id()
+    {
+        $userId = Uuid::uuid4();
+
+        for ($i = 0; $i < 4; $i++) {
+            $comment = new Comment(
+                Uuid::uuid4(),
+                Uuid::uuid4(),
+                Uuid::uuid4(),
+                'Was hoping for something more'
+            );
+
+            $this->repository->insert($comment);
+        }
+
+        $comment = new Comment(
+            Uuid::uuid4(),
+            $userId,
+            Uuid::uuid4(),
+            'Was hoping for something more'
+        );
+
+        $this->repository->insert($comment);
+
+        $total = $this->connection->table('comment')->get();
+        $this->assertCount(5, $total);
+
+        $filtered = $this->repository->getByUserId($userId);
+        $this->assertCount(1, $filtered);
+
+        foreach ($filtered as $comment) {
+            $this->assertEquals($userId, $comment->getUserId());
+        }
+    }
 }
