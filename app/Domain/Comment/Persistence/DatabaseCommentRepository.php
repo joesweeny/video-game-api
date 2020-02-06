@@ -43,6 +43,15 @@ class DatabaseCommentRepository implements CommentRepository
         }, $query->get()->toArray());
     }
 
+    public function getByUserId(UuidInterface $userId): array
+    {
+        $query = $this->connection->table('comment')->where('user_id', $userId->getBytes());
+
+        return array_map(function (\stdClass $row) {
+            return $this->hydrateCommentEntity($row);
+        }, $query->get()->toArray());
+    }
+
     private function hydrateCommentEntity(\stdClass $row): Comment
     {
         $comment = new Comment(

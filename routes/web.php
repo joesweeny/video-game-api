@@ -15,4 +15,5 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/user', 'UserController@get');
+$router->get('/user', 'UserController@list');
+$router->get('/user/{id}/comments', 'UserController@comments');
