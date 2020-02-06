@@ -35,7 +35,7 @@ class AddEntityTables extends Migration
             $table->binary('id');
             $table->binary('user_id');
             $table->binary('game_id');
-            $table->string('comment');
+            $table->string('text');
             $table->integer('created_at');
         });
     }

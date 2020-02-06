@@ -7,7 +7,7 @@ use Ramsey\Uuid\UuidInterface;
 class Comment
 {
     use Timestamps;
-    
+
     /**
      * @var UuidInterface
      */
