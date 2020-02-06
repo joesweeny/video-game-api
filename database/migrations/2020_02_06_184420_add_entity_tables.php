@@ -17,7 +17,7 @@ class AddEntityTables extends Migration
             $table->binary('id');
             $table->string('name');
             $table->string('publisher');
-            $table->integer('release_date');
+            $table->string('release_date');
             $table->string('encryption_key');
             $table->integer('created_at');
             $table->integer('updated_at');
