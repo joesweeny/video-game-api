@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Domain\Component\Persistence\CommentRepository;
+use App\Domain\Component\Persistence\DatabaseCommentRepository;
 use App\Domain\Game\Persistence\DatabaseGameRepository;
 use App\Domain\Game\Persistence\Repository;
 use App\Domain\User\Persistence\DatabaseUserRepository;
@@ -14,5 +16,6 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->app->singleton(Repository::class, DatabaseGameRepository::class);
         $this->app->singleton(UserRepository::class, DatabaseUserRepository::class);
+        $this->app->singleton(CommentRepository::class, DatabaseCommentRepository::class);
     }
 }
