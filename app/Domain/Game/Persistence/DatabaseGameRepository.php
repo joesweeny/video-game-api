@@ -33,7 +33,7 @@ class DatabaseGameRepository implements Repository
 
         $this->connection->table('game')->insert($values);
     }
-    
+
     public function get(GameRepositoryQuery $query): array
     {
         return [];
