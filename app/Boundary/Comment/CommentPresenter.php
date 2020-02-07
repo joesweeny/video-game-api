@@ -11,7 +11,7 @@ class CommentPresenter
     {
         return (object) [
             'id' => (string) $comment->getId(),
-            'name' => (string) $user->getName(),
+            'user' => $user->getName(),
             'text' => $comment->getText(),
         ];
     }

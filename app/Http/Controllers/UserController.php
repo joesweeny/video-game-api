@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Boundary\Comment\CommentService;
 use App\Boundary\User\UserService;
+use App\Domain\Exception\NotFoundException;
 use Illuminate\Http\JsonResponse;
 use Ramsey\Uuid\Exception\InvalidUuidStringException;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,6 +43,12 @@ class UserController
             ];
 
             return new JsonResponse($body, 422);
+        } catch (NotFoundException $e) {
+            $body = [
+                'error' => $e->getMessage(),
+            ];
+
+            return new JsonResponse($body, 404);
         }
 
         return new JsonResponse(['comments' => $comments]);

@@ -2,9 +2,11 @@
 
 namespace App\Domain\User\Persistence;
 
+use App\Domain\Exception\NotFoundException;
 use App\Domain\User\User;
 use Illuminate\Database\Connection;
 use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 
 class DatabaseUserRepository implements UserRepository
 {
@@ -40,6 +42,17 @@ class DatabaseUserRepository implements UserRepository
         return array_map(function (\stdClass $row) {
             return $this->hydrateUserEntity($row);
         }, $query->get()->toArray());
+    }
+
+    public function getById(UuidInterface $id): User
+    {
+        $row = $this->connection->table('user')->where('id', $id->getBytes())->first();
+
+        if ($row === null) {
+            throw new NotFoundException("User with {$id} does not exist");
+        }
+
+        return $this->hydrateUserEntity($row);
     }
 
     private function hydrateUserEntity(\stdClass $row): User

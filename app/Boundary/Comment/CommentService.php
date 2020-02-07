@@ -4,6 +4,7 @@ namespace App\Boundary\Comment;
 
 use App\Domain\Comment\Comment;
 use App\Domain\Comment\Persistence\CommentRepository;
+use App\Domain\Exception\NotFoundException;
 use App\Domain\User\Persistence\UserRepository;
 use Ramsey\Uuid\Exception\InvalidUuidStringException;
 use Ramsey\Uuid\Uuid;
@@ -37,17 +38,18 @@ class CommentService
      * @param string $userId
      * @return array|\stdClass[]
      * @throws InvalidUuidStringException
+     * @throws NotFoundException
      */
     public function getByUserId(string $userId): array
     {
         $id = Uuid::fromString($userId);
 
+        $user = $this->userRepository->getById($id);
+
         $comments = $this->commentRepository->getByUserId($id);
 
-        return array_map(function (Comment $comment) {
-
-            $dto = $this->presenter->toDto($comment);
-
+        return array_map(function (Comment $comment) use ($user) {
+            return $this->presenter->toDto($comment, $user);
         }, $comments);
     }
 }
