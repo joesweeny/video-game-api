@@ -4,7 +4,7 @@ namespace App\Domain\Game\Persistence;
 
 use App\Domain\Game\Game;
 
-interface Repository
+interface GameRepository
 {
     public function insert(Game $game): void;
 

@@ -2,6 +2,7 @@
 
 namespace Domain\User\Persistence;
 
+use App\Domain\Exception\NotFoundException;
 use App\Domain\User\Persistence\DatabaseUserRepository;
 use App\Domain\User\Persistence\UserRepository;
 use App\Domain\User\User;
@@ -59,5 +60,25 @@ class DatabaseUserRepositoryIntegrationTest extends TestCase
 
         $total = $this->repository->get();
         $this->assertCount(5, $total);
+    }
+
+    public function test_getById_returns_a_user_object()
+    {
+        $id = Uuid::uuid4();
+
+        $user = new User($id, 'Joe Sweeny', 'joe@email.com');
+        $this->repository->insert($user);
+
+        $fetched = $this->repository->getById($id);
+
+        $this->assertEquals($id, $fetched->getId());
+        $this->assertEquals('Joe Sweeny', $fetched->getName());
+        $this->assertEquals('joe@email.com', $fetched->getEmail());
+    }
+
+    public function test_getById_throws_exception_if_user_does_not_exist()
+    {
+        $this->expectException(NotFoundException::class);
+        $this->repository->getById(Uuid::uuid4());
     }
 }

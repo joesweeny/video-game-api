@@ -7,7 +7,7 @@ use Illuminate\Database\Connection;
 use Illuminate\Database\Query\Builder;
 use Ramsey\Uuid\Uuid;
 
-class DatabaseGameRepository implements Repository
+class DatabaseGameGameRepository implements GameRepository
 {
     /**
      * @var Connection
