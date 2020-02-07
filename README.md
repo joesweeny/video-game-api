@@ -24,9 +24,9 @@ $ bin/docker-dev-up -d --build
 ```
 Executing the above command performs the following:
 - Builds the relevant services to run this application (Nginx reverse proxy serving requests to the PHP application
-degine in the api docker-composer service).
+defined in the api docker-composer service).
 - Runs the required database migrations (within the migrate service).
-- Also runs the database seeder command to seed the database with the data provided in the test specification.
+- Also runs the database seeder command to seed the database with the data provided in the specification.
 
 #### Note
 Executing `bin/docker-dev-up -d --build` returns to the terminal the host and port to access the API.
@@ -47,7 +47,7 @@ matching ALL parameters will be returned.
 
 Example:
 ```
-GET /game?name=FIFA%2020
+GET /game?name=Call%20of%20Duty%3A%20Modern%20Warfare
 ```
 
 ##### List all users
