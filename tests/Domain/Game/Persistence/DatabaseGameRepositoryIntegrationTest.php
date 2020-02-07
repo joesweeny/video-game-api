@@ -3,9 +3,9 @@
 namespace Domain\Game\Persistence;
 
 use App\Domain\Game\Game;
-use App\Domain\Game\Persistence\DatabaseGameRepository;
+use App\Domain\Game\Persistence\DatabaseGameGameRepository;
 use App\Domain\Game\Persistence\GameRepositoryQuery;
-use App\Domain\Game\Persistence\Repository;
+use App\Domain\Game\Persistence\GameRepository;
 use App\TestCase;
 use Illuminate\Database\Connection;
 use Laravel\Lumen\Testing\DatabaseMigrations;
@@ -20,7 +20,7 @@ class DatabaseGameRepositoryIntegrationTest extends TestCase
      */
     private $connection;
     /**
-     * @var Repository
+     * @var GameRepository
      */
     private $repository;
 
@@ -28,12 +28,12 @@ class DatabaseGameRepositoryIntegrationTest extends TestCase
     {
         parent::setUp();
         $this->connection = $this->app->make(Connection::class);
-        $this->repository = $this->app->make(Repository::class);
+        $this->repository = $this->app->make(GameRepository::class);
     }
 
     public function test_interface_is_bound()
     {
-        $this->assertInstanceOf(DatabaseGameRepository::class, $this->repository);
+        $this->assertInstanceOf(DatabaseGameGameRepository::class, $this->repository);
     }
 
     public function test_insert_increases_table_count()
