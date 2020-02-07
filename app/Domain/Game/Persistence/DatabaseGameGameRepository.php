@@ -58,7 +58,7 @@ class DatabaseGameGameRepository implements GameRepository
         }
 
         if ($query->getReleaseDateEquals() !== null) {
-            $builder->where('release_date', "LIKE '{$query->getReleaseDateEquals()}%'");
+            $builder->where('release_date', 'like', "%{$query->getReleaseDateEquals()}%");
         }
 
         if ($query->getPublisherEquals() !== null) {
