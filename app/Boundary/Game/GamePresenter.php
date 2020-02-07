@@ -12,7 +12,7 @@ class GamePresenter
             'id' => (string) $game->getId(),
             'name' => $game->getName(),
             'publisher' => $game->getPublisher(),
-            'release_date' => $game->getReleased()->format(DATE_COOKIE)
+            'release_date' => $game->getReleased()->format('ga, jS F Y')
         ];
     }
 }

@@ -92,12 +92,7 @@ class GameService
         }
 
         if (isset($query->release_date)) {
-            $date = \DateTimeImmutable::createFromFormat('Y-m-d', $query->release_date);
-
-            if ($date === false) {
-                throw new \InvalidArgumentException("Release date query parameter is not in the correct format");
-            }
-            $gpq->setReleaseDateEquals($date);
+            $gpq->setReleaseDateEquals($query->release_date);
         }
 
         return $gpq;
