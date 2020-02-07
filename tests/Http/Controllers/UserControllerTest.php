@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Boundary\Comment\CommentService;
 use App\Boundary\User\UserService;
+use App\Domain\Exception\NotFoundException;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\ObjectProphecy;
 use Ramsey\Uuid\Exception\InvalidUuidStringException;
@@ -101,6 +102,22 @@ class UserControllerTest extends TestCase
         ];
 
         $this->assertEquals(422, $response->getStatusCode());
+        $this->assertEquals($expected, $body);
+    }
+
+    public function test_comments_returns_404_response_if_user_does_not_exist()
+    {
+        $this->commentService->getByUserId('1da15c2e-f2fa-45ca-9c71-277428258931')
+            ->willThrow(new NotFoundException('User does not exist'));
+
+        $response = $this->controller->comments('1da15c2e-f2fa-45ca-9c71-277428258931');
+        $body = json_decode($response->getContent());
+
+        $expected = (object) [
+            'error' => 'User does not exist',
+        ];
+
+        $this->assertEquals(404, $response->getStatusCode());
         $this->assertEquals($expected, $body);
     }
 }
