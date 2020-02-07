@@ -27,7 +27,7 @@ class DatabaseGameGameRepository implements GameRepository
             'id' => $game->getId()->getBytes(),
             'name' => $game->getName(),
             'publisher' => $game->getPublisher(),
-            'release_date' => $game->getReleased()->format('Y-m-d'),
+            'release_date' => $game->getReleased()->format(DATE_ATOM),
             'encryption_key' => $game->getEncryptionKey(),
             'created_at' => $now->getTimestamp(),
             'updated_at' => $now->getTimestamp(),
@@ -58,7 +58,7 @@ class DatabaseGameGameRepository implements GameRepository
         }
 
         if ($query->getReleaseDateEquals() !== null) {
-            $builder->where('release_date', $query->getReleaseDateEquals()->format('Y-m-d'));
+            $builder->where('release_date', 'like', "%{$query->getReleaseDateEquals()}%");
         }
 
         if ($query->getPublisherEquals() !== null) {

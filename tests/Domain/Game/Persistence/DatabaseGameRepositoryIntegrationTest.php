@@ -169,7 +169,7 @@ class DatabaseGameRepositoryIntegrationTest extends TestCase
         $total = $this->repository->get();
         $this->assertCount(5, $total);
 
-        $query = (new GameRepositoryQuery())->setPublisherEquals('Bandai Namco Entertainment');
+        $query = (new GameRepositoryQuery())->setReleaseDateEquals('2020-02-08');
         $total = $this->repository->get($query);
         $this->assertCount(1, $total);
     }

@@ -13,7 +13,7 @@ class GameRepositoryQuery
      */
     private $publisher;
     /**
-     * @var \DateTimeImmutable|null
+     * @var \string|null
      */
     private $releasedDate;
 
@@ -39,13 +39,13 @@ class GameRepositoryQuery
         return $this->publisher;
     }
 
-    public function setReleaseDateEquals(\DateTimeImmutable $date): self
+    public function setReleaseDateEquals(string $date): self
     {
         $this->releasedDate = $date;
         return $this;
     }
 
-    public function getReleaseDateEquals(): ?\DateTimeImmutable
+    public function getReleaseDateEquals(): ?string
     {
         return $this->releasedDate;
     }
