@@ -1,0 +1,4 @@
+#!/bin/bash
+
+bin/docker-dev run --rm test php vendor/bin/phpunit $@
+
