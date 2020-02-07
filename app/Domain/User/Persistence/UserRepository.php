@@ -12,4 +12,6 @@ interface UserRepository
      * @return array|User[]
      */
     public function get(): array;
+
+    
 }
