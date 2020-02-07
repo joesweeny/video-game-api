@@ -88,17 +88,17 @@ class DatabaseSeeder extends Seeder
 
         $users = [
             $user1 = new App\Domain\User\User(
-                Uuid::uuid4(),
+                Uuid::fromString('36f1cd28-6fb0-405e-aa14-2a4ea9e89701'),
                 'Dave Clark',
                 'dave.clark@intelligencefusion.co.uk'
             ),
             $user2 = new App\Domain\User\User(
-                Uuid::uuid4(),
+                Uuid::fromString('19bacf9a-5350-4803-a9e4-48991e93ffad'),
                 'Patricia Summer',
                 'patricia.summer@intelligencefusion.co.uk'
             ),
             $user3 = new App\Domain\User\User(
-                Uuid::uuid4(),
+                Uuid::fromString('86d15df5-6a19-4489-b286-1f02575564ed'),
                 'Thomas Jeffrey',
                 't.j@intelligencefusion.co.uk'
             ),
