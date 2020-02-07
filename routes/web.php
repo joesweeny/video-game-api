@@ -17,3 +17,4 @@ $router->get('/', function () use ($router) {
 
 $router->get('/user', 'UserController@list');
 $router->get('/user/{id}/comments', 'UserController@comments');
+$router->get('/game', 'GameController@list');
