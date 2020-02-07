@@ -87,6 +87,7 @@ class GameServiceTest extends TestCase
                 'comments' => [
                     (object) [
                         'id' => 'c6daeb80-ca0a-4d75-8763-efe2f578a944',
+                        'game_id' => 'e2ca7bb0-4ad6-413d-ac19-5b118be13003',
                         'user' => 'Joe',
                         'text' => 'Pretty Awesome',
                     ]
@@ -144,6 +145,7 @@ class GameServiceTest extends TestCase
                 'comments' => [
                     (object) [
                         'id' => 'c6daeb80-ca0a-4d75-8763-efe2f578a944',
+                        'game_id' => 'e2ca7bb0-4ad6-413d-ac19-5b118be13003',
                         'user' => 'Joe',
                         'text' => 'Pretty Awesome',
                     ]
