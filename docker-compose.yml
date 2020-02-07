@@ -20,7 +20,7 @@ services:
     links:
       - api
 
-  api:
+  api: &api
     build:
       dockerfile: ./docker/api/Dockerfile
       context: ./
@@ -31,6 +31,23 @@ services:
       DB_HOST: mysql
       DB_PORT: 3306
       DB_DATABASE: app
+      DB_USERNAME: root
+      DB_PASSWORD: password
+    volumes:
+      - .:/opt
+
+  migrate:
+    <<: *api
+    restart: on-failure
+    command: /opt/bin/migrate
+
+  test:
+    build:
+      dockerfile: ./docker/api/Dockerfile
+      context: ./
+    environment:
+      DB_CONNECTION: sqlite
+      DB_DATABASE: "sqlite::memory:"
       DB_USERNAME: root
       DB_PASSWORD: password
     volumes:
